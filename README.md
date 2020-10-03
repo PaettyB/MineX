@@ -1,2 +1,2 @@
 # MineX
-A clone of Minecraft
+A clone of Minecraft, written in Java without a real Game Engine, using OpenGL with the Light Weight Game Library 3.
