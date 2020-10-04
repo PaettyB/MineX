@@ -67,7 +67,7 @@ public class Game extends DisplayManager {
 
 		CommandManager.registerAll();
 
-		TexturedModel playerModel = new TexturedModel(loader.loadToVao(OBJLoader.loadOBJ("player")),
+		TexturedModel playerModel = new TexturedModel(loader.loadToVao(OBJLoader.loadOBJ("player_dim")),
 				new ModelTexture(loader.loadTexture("/textures/playerLayout")));
 
 		player = new Player(this, playerModel, new Vector3f(0.5f, World.SUPERFLAT_HEIGHT+4, 0.5f), 0, 0, 0, 0.1f);
@@ -77,6 +77,11 @@ public class Game extends DisplayManager {
 		hudManager = new HUDManager(this, loader, guiRenderer);
 
 		camera.setPitch(180);
+		
+		item = new ItemEntity(playerModel, new Vector3f(1,World.SUPERFLAT_HEIGHT+2, 1), 0,0,0,1);
+		
+		renderer.processEntity(item);
+		
 
 		lastTick = System.nanoTime();
 
