@@ -67,10 +67,10 @@ public class Game extends DisplayManager {
 
 		CommandManager.registerAll();
 
-		TexturedModel playerModel = new TexturedModel(loader.loadToVao(OBJLoader.loadOBJ("player_dim")),
-				new ModelTexture(loader.loadTexture("/textures/playerLayout")));
+		TexturedModel playerModel = new TexturedModel(loader.loadToVao(OBJLoader.loadOBJ("player_real")),
+				new ModelTexture(loader.loadTexture("/textures/PlayerUV")));
 
-		player = new Player(this, playerModel, new Vector3f(0.5f, World.SUPERFLAT_HEIGHT+4, 0.5f), 0, 0, 0, 0.1f);
+		player = new Player(this, playerModel, new Vector3f(0, World.SUPERFLAT_HEIGHT+4, 0), 0, 0, 0, 0.1f);
 
 		guiRenderer = new GUIRenderer(loader);
 
@@ -78,7 +78,7 @@ public class Game extends DisplayManager {
 
 		camera.setPitch(180);
 		
-		item = new ItemEntity(playerModel, new Vector3f(1,World.SUPERFLAT_HEIGHT+2, 1), 0,0,0,1);
+		item = new ItemEntity(playerModel, new Vector3f(0.5f,World.SUPERFLAT_HEIGHT+2, 0.5f), 0,0,0,1);
 		
 		renderer.processEntity(item);
 		
