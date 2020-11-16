@@ -1,10 +1,10 @@
 package de.keygalp.mineX.worlds;
 
+import de.keygalp.mineX.Game;
+
 import java.nio.ByteBuffer;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
-
-import de.keygalp.mineX.Game;
 
 public class ChunkMesh {
 

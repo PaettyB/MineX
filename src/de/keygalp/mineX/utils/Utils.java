@@ -1,13 +1,12 @@
 package de.keygalp.mineX.utils;
 
-import java.util.Map;
-
+import de.keygalp.mineX.renderEngine.DisplayManager;
+import de.keygalp.mineX.worlds.ChunkSection;
 import org.joml.Vector2f;
 import org.joml.Vector2i;
 import org.joml.Vector3i;
 
-import de.keygalp.mineX.renderEngine.DisplayManager;
-import de.keygalp.mineX.worlds.ChunkSection;
+import java.util.Map;
 
 public class Utils {
 

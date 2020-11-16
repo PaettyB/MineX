@@ -1,17 +1,5 @@
 package de.keygalp.mineX.worlds;
 
-import static org.lwjgl.glfw.GLFW.glfwWindowShouldClose;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-
-import org.joml.Vector2i;
-import org.joml.Vector3f;
-import org.joml.Vector3i;
-
 import de.keygalp.mineX.Game;
 import de.keygalp.mineX.fontMeshCreator.GUIText;
 import de.keygalp.mineX.fontMeshCreator.TextMeshCreator;
@@ -20,6 +8,17 @@ import de.keygalp.mineX.renderEngine.DisplayManager;
 import de.keygalp.mineX.renderEngine.MasterRenderer;
 import de.keygalp.mineX.utils.Utils;
 import de.keygalp.mineX.utils.Vector3b;
+import org.joml.Vector2i;
+import org.joml.Vector3f;
+import org.joml.Vector3i;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
+import static org.lwjgl.glfw.GLFW.glfwWindowShouldClose;
 
 public class World {
 

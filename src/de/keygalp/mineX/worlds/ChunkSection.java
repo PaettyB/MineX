@@ -1,18 +1,17 @@
 package de.keygalp.mineX.worlds;
 
-import java.nio.ByteBuffer;
-import java.nio.FloatBuffer;
-import java.nio.IntBuffer;
-
-import org.joml.Vector3i;
-import org.lwjgl.opengl.GL15;
-import org.lwjgl.opengl.GL30;
-
 import de.keygalp.mineX.Game;
 import de.keygalp.mineX.assets.SpriteSheet;
 import de.keygalp.mineX.inventory.Material;
 import de.keygalp.mineX.textures.TextureType;
 import de.keygalp.mineX.utils.Vector3b;
+import org.joml.Vector3i;
+import org.lwjgl.opengl.GL15;
+import org.lwjgl.opengl.GL30;
+
+import java.nio.ByteBuffer;
+import java.nio.FloatBuffer;
+import java.nio.IntBuffer;
 
 public class ChunkSection {
 

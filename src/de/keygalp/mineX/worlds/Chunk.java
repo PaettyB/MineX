@@ -1,9 +1,8 @@
 package de.keygalp.mineX.worlds;
 
-import org.joml.Vector2i;
-
 import de.keygalp.mineX.renderEngine.MasterRenderer;
 import de.keygalp.mineX.utils.Vector3b;
+import org.joml.Vector2i;
 
 public class Chunk {
 

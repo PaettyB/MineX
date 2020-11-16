@@ -1,9 +1,8 @@
 package de.keygalp.mineX.worlds;
 
-import org.joml.Vector2i;
-
 import de.keygalp.mineX.utils.ImprovedNoise;
 import de.keygalp.mineX.utils.Utils;
+import org.joml.Vector2i;
 
 public class TerrainGenerator {
 

@@ -1,14 +1,5 @@
 package de.keygalp.mineX.entities;
 
-import java.text.NumberFormat;
-import java.util.Locale;
-
-import org.joml.Vector2f;
-import org.joml.Vector2i;
-import org.joml.Vector3f;
-import org.joml.Vector3i;
-import org.lwjgl.glfw.GLFW;
-
 import de.keygalp.mineX.Block;
 import de.keygalp.mineX.Game;
 import de.keygalp.mineX.fontMeshCreator.GUIText;
@@ -25,6 +16,14 @@ import de.keygalp.mineX.models.TexturedModel;
 import de.keygalp.mineX.utils.Ray;
 import de.keygalp.mineX.worlds.Direction;
 import de.keygalp.mineX.worlds.World;
+import org.joml.Vector2f;
+import org.joml.Vector2i;
+import org.joml.Vector3f;
+import org.joml.Vector3i;
+import org.lwjgl.glfw.GLFW;
+
+import java.text.NumberFormat;
+import java.util.Locale;
 
 public class Player extends Entity implements InventoryHolder {
 

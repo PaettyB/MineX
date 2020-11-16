@@ -1,9 +1,8 @@
 package de.keygalp.mineX;
 
-import org.joml.Vector3i;
-
 import de.keygalp.mineX.inventory.Material;
 import de.keygalp.mineX.worlds.World;
+import org.joml.Vector3i;
 
 public class Block {
 	

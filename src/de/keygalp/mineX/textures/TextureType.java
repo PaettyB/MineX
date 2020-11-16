@@ -1,11 +1,11 @@
 package de.keygalp.mineX.textures;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import de.keygalp.mineX.assets.SpriteSheet;
 import de.keygalp.mineX.inventory.Material;
 import de.keygalp.mineX.worlds.Direction;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class TextureType {
 

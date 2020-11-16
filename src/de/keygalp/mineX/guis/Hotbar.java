@@ -1,7 +1,5 @@
 package de.keygalp.mineX.guis;
 
-import org.joml.Vector2i;
-
 import de.keygalp.mineX.Game;
 import de.keygalp.mineX.assets.Assets;
 import de.keygalp.mineX.guis.rendering.GUIRenderer;
@@ -9,6 +7,7 @@ import de.keygalp.mineX.guis.rendering.GUITexture;
 import de.keygalp.mineX.inventory.ItemStack;
 import de.keygalp.mineX.inventory.Material;
 import de.keygalp.mineX.models.Loader;
+import org.joml.Vector2i;
 
 public class Hotbar {
 	

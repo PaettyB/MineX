@@ -1,14 +1,13 @@
 package de.keygalp.mineX.input;
 
-import static org.lwjgl.glfw.GLFW.GLFW_RELEASE;
+import de.keygalp.mineX.renderEngine.DisplayManager;
+import org.lwjgl.glfw.GLFW;
+import org.lwjgl.glfw.GLFWKeyCallback;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.glfw.GLFWKeyCallback;
-
-import de.keygalp.mineX.renderEngine.DisplayManager;
+import static org.lwjgl.glfw.GLFW.GLFW_RELEASE;
 
 public class KeyboardHandler extends GLFWKeyCallback {
 

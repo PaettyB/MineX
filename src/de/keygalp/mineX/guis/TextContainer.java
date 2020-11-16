@@ -1,13 +1,12 @@
 package de.keygalp.mineX.guis;
 
-import java.util.ArrayList;
-
-import org.joml.Vector2i;
-
 import de.keygalp.mineX.Game;
 import de.keygalp.mineX.assets.Assets;
 import de.keygalp.mineX.fontMeshCreator.GUIText;
 import de.keygalp.mineX.fontMeshCreator.TextMeshCreator;
+import org.joml.Vector2i;
+
+import java.util.ArrayList;
 
 public class TextContainer {
 

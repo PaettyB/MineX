@@ -1,10 +1,9 @@
 package de.keygalp.mineX.utils;
 
+import de.keygalp.mineX.entities.Camera;
 import org.joml.Matrix4f;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
-
-import de.keygalp.mineX.entities.Camera;
 
 public class Maths {
 

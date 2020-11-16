@@ -1,19 +1,5 @@
 package de.keygalp.mineX.renderEngine;
 
-import static org.lwjgl.opengl.GL11.GL_COLOR_BUFFER_BIT;
-import static org.lwjgl.opengl.GL11.GL_DEPTH_BUFFER_BIT;
-import static org.lwjgl.opengl.GL11.glClear;
-import static org.lwjgl.opengl.GL11.glClearColor;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.joml.Matrix4f;
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.opengl.GL11;
-
 import de.keygalp.mineX.entities.Camera;
 import de.keygalp.mineX.entities.Entity;
 import de.keygalp.mineX.entities.Light;
@@ -21,6 +7,16 @@ import de.keygalp.mineX.input.KeyboardHandler;
 import de.keygalp.mineX.models.TexturedModel;
 import de.keygalp.mineX.shaders.StaticShader;
 import de.keygalp.mineX.worlds.ChunkSection;
+import org.joml.Matrix4f;
+import org.lwjgl.glfw.GLFW;
+import org.lwjgl.opengl.GL11;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import static org.lwjgl.opengl.GL11.*;
 
 public class MasterRenderer {
 

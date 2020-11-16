@@ -1,13 +1,13 @@
 package de.keygalp.mineX.fontMeshCreator;
 
+import de.keygalp.mineX.renderEngine.DisplayManager;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
-import de.keygalp.mineX.renderEngine.DisplayManager;
 
 public class MetaFile {
 	private static final int PAD_TOP = 0;

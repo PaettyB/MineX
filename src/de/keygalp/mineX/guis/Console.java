@@ -1,9 +1,8 @@
 package de.keygalp.mineX.guis;
 
-import org.joml.Vector2i;
-
 import de.keygalp.mineX.Game;
 import de.keygalp.mineX.guis.rendering.GUIObject;
+import org.joml.Vector2i;
 
 public class Console {
 	

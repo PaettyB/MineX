@@ -1,20 +1,19 @@
 package de.keygalp.mineX.renderEngine;
 
-import java.util.List;
-import java.util.Map;
-
-import org.joml.Matrix4f;
-import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL13;
-import org.lwjgl.opengl.GL20;
-import org.lwjgl.opengl.GL30;
-
 import de.keygalp.mineX.entities.Entity;
 import de.keygalp.mineX.models.RawModel;
 import de.keygalp.mineX.models.TexturedModel;
 import de.keygalp.mineX.shaders.StaticShader;
 import de.keygalp.mineX.textures.ModelTexture;
 import de.keygalp.mineX.utils.Maths;
+import org.joml.Matrix4f;
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL13;
+import org.lwjgl.opengl.GL20;
+import org.lwjgl.opengl.GL30;
+
+import java.util.List;
+import java.util.Map;
 
 public class EntityRenderer {
 

@@ -1,12 +1,11 @@
 package de.keygalp.mineX.fontMeshCreator;
 
-import org.joml.Vector2f;
-import org.joml.Vector2i;
-import org.joml.Vector3f;
-
 import de.keygalp.mineX.assets.Assets;
 import de.keygalp.mineX.fontRendering.TextMaster;
 import de.keygalp.mineX.utils.Utils;
+import org.joml.Vector2f;
+import org.joml.Vector2i;
+import org.joml.Vector3f;
 
 public class GUIText {
 	private String textString;

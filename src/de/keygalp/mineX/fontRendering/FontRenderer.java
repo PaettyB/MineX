@@ -1,15 +1,14 @@
 package de.keygalp.mineX.fontRendering;
 
-import java.util.List;
-import java.util.Map;
-
+import de.keygalp.mineX.fontMeshCreator.FontType;
+import de.keygalp.mineX.fontMeshCreator.GUIText;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL13;
 import org.lwjgl.opengl.GL20;
 import org.lwjgl.opengl.GL30;
 
-import de.keygalp.mineX.fontMeshCreator.FontType;
-import de.keygalp.mineX.fontMeshCreator.GUIText;
+import java.util.List;
+import java.util.Map;
 
 public class FontRenderer {
 

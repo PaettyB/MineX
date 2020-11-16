@@ -1,9 +1,8 @@
 package de.keygalp.mineX.commands;
 
-import java.util.HashMap;
-
-import de.keygalp.mineX.Game;
 import de.keygalp.mineX.guis.Console;
+
+import java.util.HashMap;
 
 public class CommandManager {
 	

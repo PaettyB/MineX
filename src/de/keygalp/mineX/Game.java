@@ -1,8 +1,5 @@
 package de.keygalp.mineX;
 
-import org.joml.Vector3f;
-import org.lwjgl.glfw.GLFW;
-
 import de.keygalp.mineX.assets.Assets;
 import de.keygalp.mineX.commands.CommandManager;
 import de.keygalp.mineX.entities.Camera;
@@ -23,6 +20,8 @@ import de.keygalp.mineX.renderEngine.DisplayManager;
 import de.keygalp.mineX.renderEngine.MasterRenderer;
 import de.keygalp.mineX.textures.ModelTexture;
 import de.keygalp.mineX.worlds.World;
+import org.joml.Vector3f;
+import org.lwjgl.glfw.GLFW;
 
 public class Game extends DisplayManager {
 

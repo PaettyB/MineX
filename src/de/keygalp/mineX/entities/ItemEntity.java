@@ -1,8 +1,7 @@
 package de.keygalp.mineX.entities;
 
-import org.joml.Vector3f;
-
 import de.keygalp.mineX.models.TexturedModel;
+import org.joml.Vector3f;
 
 public class ItemEntity extends Entity{
 

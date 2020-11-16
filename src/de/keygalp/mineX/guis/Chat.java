@@ -1,10 +1,9 @@
 package de.keygalp.mineX.guis;
 
-import org.joml.Vector2i;
-import org.lwjgl.glfw.GLFW;
-
 import de.keygalp.mineX.Game;
 import de.keygalp.mineX.input.KeyboardHandler;
+import org.joml.Vector2i;
+import org.lwjgl.glfw.GLFW;
 
 public class Chat {
 

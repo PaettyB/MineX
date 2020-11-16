@@ -1,10 +1,10 @@
 package de.keygalp.mineX.fontMeshCreator;
 
+import de.keygalp.mineX.renderEngine.DisplayManager;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-
-import de.keygalp.mineX.renderEngine.DisplayManager;
 
 public class TextMeshCreator {
 	public static final double LINE_HEIGHT = 1f;

@@ -1,10 +1,9 @@
 package de.keygalp.mineX.guis.rendering;
 
-import org.joml.Matrix4f;
-import org.joml.Vector4f;
-
 import de.keygalp.mineX.Game;
 import de.keygalp.mineX.shaders.ShaderProgram;
+import org.joml.Matrix4f;
+import org.joml.Vector4f;
 
 public class GUIObjectShader extends ShaderProgram{
 

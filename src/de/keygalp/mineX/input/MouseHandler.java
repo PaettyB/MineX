@@ -1,17 +1,16 @@
 package de.keygalp.mineX.input;
 
-import static org.lwjgl.glfw.GLFW.GLFW_RELEASE;
-
-import java.nio.DoubleBuffer;
-import java.util.ArrayList;
-import java.util.List;
-
+import de.keygalp.mineX.renderEngine.DisplayManager;
 import org.joml.Vector2f;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.glfw.GLFW;
 import org.lwjgl.glfw.GLFWMouseButtonCallback;
 
-import de.keygalp.mineX.renderEngine.DisplayManager;
+import java.nio.DoubleBuffer;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.lwjgl.glfw.GLFW.GLFW_RELEASE;
 
 public class MouseHandler extends GLFWMouseButtonCallback {
 	

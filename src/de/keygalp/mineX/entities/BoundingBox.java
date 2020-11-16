@@ -1,7 +1,6 @@
 package de.keygalp.mineX.entities;
 
 import org.joml.Vector3f;
-import org.joml.Vector3fc;
 
 public class BoundingBox {
 

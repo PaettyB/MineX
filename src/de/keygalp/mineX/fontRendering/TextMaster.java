@@ -1,15 +1,15 @@
 package de.keygalp.mineX.fontRendering;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import de.keygalp.mineX.fontMeshCreator.FontType;
 import de.keygalp.mineX.fontMeshCreator.GUIText;
 import de.keygalp.mineX.fontMeshCreator.TextMeshData;
 import de.keygalp.mineX.models.Loader;
 import de.keygalp.mineX.models.VertexArrayPointers;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class TextMaster {
 

@@ -1,15 +1,11 @@
 package de.keygalp.mineX.models;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 import org.joml.Vector2f;
 import org.joml.Vector3f;
+
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class OBJLoader {
 

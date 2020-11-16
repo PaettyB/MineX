@@ -1,11 +1,10 @@
 package de.keygalp.mineX.shaders;
 
-import org.joml.Matrix4f;
-
 import de.keygalp.mineX.Game;
 import de.keygalp.mineX.entities.Camera;
 import de.keygalp.mineX.entities.Light;
 import de.keygalp.mineX.utils.Maths;
+import org.joml.Matrix4f;
 
 public class StaticShader extends ShaderProgram{
 	

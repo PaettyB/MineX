@@ -1,5 +1,13 @@
 package de.keygalp.mineX.models;
 
+import de.keygalp.mineX.worlds.ChunkMesh;
+import org.lwjgl.BufferUtils;
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL15;
+import org.lwjgl.opengl.GL20;
+import org.lwjgl.opengl.GL30;
+import org.newdawn.slick.opengl.PNGDecoder;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -8,15 +16,6 @@ import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.lwjgl.BufferUtils;
-import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL15;
-import org.lwjgl.opengl.GL20;
-import org.lwjgl.opengl.GL30;
-import org.newdawn.slick.opengl.PNGDecoder;
-
-import de.keygalp.mineX.worlds.ChunkMesh;
 
 public class Loader {
 

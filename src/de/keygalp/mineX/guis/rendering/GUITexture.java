@@ -1,9 +1,8 @@
 package de.keygalp.mineX.guis.rendering;
 
+import de.keygalp.mineX.utils.Utils;
 import org.joml.Vector2f;
 import org.joml.Vector2i;
-
-import de.keygalp.mineX.utils.Utils;
 
 public class GUITexture {
 

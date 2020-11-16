@@ -1,13 +1,13 @@
 package de.keygalp.mineX.assets;
 
-import java.io.File;
-
 import de.keygalp.mineX.fontMeshCreator.FontType;
 import de.keygalp.mineX.models.Loader;
 import de.keygalp.mineX.models.OBJLoader;
 import de.keygalp.mineX.models.TexturedModel;
 import de.keygalp.mineX.textures.ModelTexture;
 import de.keygalp.mineX.textures.TextureType;
+
+import java.io.File;
 
 public class Assets {
 	

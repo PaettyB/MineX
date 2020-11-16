@@ -1,12 +1,11 @@
 package de.keygalp.mineX.guis.rendering;
 
-import org.joml.Vector2f;
-import org.joml.Vector2i;
-import org.joml.Vector4f;
-
 import de.keygalp.mineX.models.Loader;
 import de.keygalp.mineX.models.RawModel;
 import de.keygalp.mineX.utils.Utils;
+import org.joml.Vector2f;
+import org.joml.Vector2i;
+import org.joml.Vector4f;
 
 public class GUIObject {
 

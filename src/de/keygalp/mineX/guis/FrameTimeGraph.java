@@ -1,17 +1,16 @@
 package de.keygalp.mineX.guis;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.Iterator;
-
-import org.joml.Vector2i;
-import org.joml.Vector4f;
-
 import de.keygalp.mineX.Game;
 import de.keygalp.mineX.guis.rendering.GUIObject;
 import de.keygalp.mineX.guis.rendering.GUIRenderer;
 import de.keygalp.mineX.models.Loader;
 import de.keygalp.mineX.renderEngine.DisplayManager;
+import org.joml.Vector2i;
+import org.joml.Vector4f;
+
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.Iterator;
 
 public class FrameTimeGraph {
 

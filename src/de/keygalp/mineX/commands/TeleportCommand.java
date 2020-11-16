@@ -1,9 +1,8 @@
 package de.keygalp.mineX.commands;
 
-import org.joml.Vector3f;
-
 import de.keygalp.mineX.Game;
 import de.keygalp.mineX.guis.Console;
+import org.joml.Vector3f;
 
 public class TeleportCommand implements Command {
 

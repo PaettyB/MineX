@@ -1,10 +1,9 @@
 package de.keygalp.mineX.fontRendering;
 
-import org.joml.Vector2f;
-import org.joml.Vector3f;
-
 import de.keygalp.mineX.Game;
 import de.keygalp.mineX.shaders.ShaderProgram;
+import org.joml.Vector2f;
+import org.joml.Vector3f;
 
 public class FontShader extends ShaderProgram{
 

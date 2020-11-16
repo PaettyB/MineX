@@ -1,14 +1,13 @@
 package de.keygalp.mineX.guis;
 
-import org.joml.Vector2i;
-import org.lwjgl.glfw.GLFW;
-
 import de.keygalp.mineX.Game;
 import de.keygalp.mineX.guis.rendering.GUIRenderer;
 import de.keygalp.mineX.guis.rendering.GUITexture;
 import de.keygalp.mineX.input.KeyboardHandler;
 import de.keygalp.mineX.models.Loader;
 import de.keygalp.mineX.renderEngine.DisplayManager;
+import org.joml.Vector2i;
+import org.lwjgl.glfw.GLFW;
 
 public class HUDManager {
 

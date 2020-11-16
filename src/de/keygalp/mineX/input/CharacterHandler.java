@@ -1,9 +1,9 @@
 package de.keygalp.mineX.input;
 
+import org.lwjgl.glfw.GLFWCharCallback;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import org.lwjgl.glfw.GLFWCharCallback;
 
 public class CharacterHandler extends GLFWCharCallback{
 	

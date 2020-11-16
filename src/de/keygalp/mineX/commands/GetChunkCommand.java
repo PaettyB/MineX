@@ -1,13 +1,12 @@
 package de.keygalp.mineX.commands;
 
-import org.joml.Vector2i;
-import org.joml.Vector3i;
-
 import de.keygalp.mineX.Game;
 import de.keygalp.mineX.entities.Player;
 import de.keygalp.mineX.guis.Console;
 import de.keygalp.mineX.worlds.Chunk;
 import de.keygalp.mineX.worlds.ChunkSection;
+import org.joml.Vector2i;
+import org.joml.Vector3i;
 
 public class GetChunkCommand implements Command {
 
