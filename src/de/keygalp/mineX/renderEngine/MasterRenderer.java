@@ -1,5 +1,6 @@
 package de.keygalp.mineX.renderEngine;
 
+import de.keygalp.mineX.Game;
 import de.keygalp.mineX.entities.Camera;
 import de.keygalp.mineX.entities.Entity;
 import de.keygalp.mineX.entities.Light;
@@ -42,7 +43,10 @@ public class MasterRenderer {
 	private Map<TexturedModel, List<Entity>> entities = new HashMap<TexturedModel, List<Entity>>();
 	private List<ChunkSection> chunks = new ArrayList<ChunkSection>();
 
-	public MasterRenderer() {
+	private Game game;
+	
+	public MasterRenderer(Game game) {
+		this.game = game;
 		enableCulling();
 		createProjectionMatrix();
 		chunkRenderer = new ChunkRenderer(shader, projectionMatrix);
@@ -77,24 +81,26 @@ public class MasterRenderer {
 	}
 	
 	public void tick() {
-		if (KeyboardHandler.keyTyped(GLFW.GLFW_KEY_F)) {
-			fill = !fill;
-		}
-		if (KeyboardHandler.keyTyped(GLFW.GLFW_KEY_C)) {
-			if (cull) {
-				disableCulling();
-				cull = false;
-			} else {
-				enableCulling();
-				cull = true;
+		if(game.isPlayerFocused()) {
+			if (KeyboardHandler.keyTyped(GLFW.GLFW_KEY_F)) {
+				fill = !fill;
 			}
-		}
-		if (KeyboardHandler.keyTyped(GLFW.GLFW_KEY_V)) {
-			toggleVsync();
-		}
-
-		if (KeyboardHandler.keyTyped(GLFW.GLFW_KEY_B)) {
-			CHUNK_BORDERS = !CHUNK_BORDERS;
+			if (KeyboardHandler.keyTyped(GLFW.GLFW_KEY_C)) {
+				if (cull) {
+					disableCulling();
+					cull = false;
+				} else {
+					enableCulling();
+					cull = true;
+				}
+			}
+			if (KeyboardHandler.keyTyped(GLFW.GLFW_KEY_V)) {
+				toggleVsync();
+			}
+			
+			if (KeyboardHandler.keyTyped(GLFW.GLFW_KEY_B)) {
+				CHUNK_BORDERS = !CHUNK_BORDERS;
+			}
 		}
 	}
 

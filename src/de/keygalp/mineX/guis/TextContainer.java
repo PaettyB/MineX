@@ -15,7 +15,7 @@ public class TextContainer {
 
 	private int numberOfLines = 0;
 	private int margin = 5;
-	private int maxNumberofLines = 17;
+	private int maxNumberofLines = 23;
 
 	private ArrayList<GUIText> texts = new ArrayList<GUIText>();
 

@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 public class CommandManager {
 	
-	private static HashMap<String, Command> commands = new HashMap<String, Command>();
+	public static HashMap<String, Command> commands = new HashMap<String, Command>();
 	
 	public static void registerCommand(String name, Command command) {
 		commands.put(name, command);
@@ -29,6 +29,7 @@ public class CommandManager {
 		registerCommand("getChunkSec", new GetChunkSectionCommand());
 		registerCommand("getChunk", new GetChunkCommand());
 		registerCommand("reload", new ReloadCommand());
+		registerCommand("help", new HelpCommand());
 	}
 
 }

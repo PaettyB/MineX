@@ -7,6 +7,7 @@ import de.keygalp.mineX.entities.ItemEntity;
 import de.keygalp.mineX.entities.Light;
 import de.keygalp.mineX.entities.Player;
 import de.keygalp.mineX.events.EventExecutor;
+import de.keygalp.mineX.events.TestEvent;
 import de.keygalp.mineX.fontRendering.TextMaster;
 import de.keygalp.mineX.guis.HUDManager;
 import de.keygalp.mineX.guis.rendering.GUIRenderer;
@@ -59,11 +60,12 @@ public class Game extends DisplayManager {
 
 		light = new Light(new Vector3f(-1000000, 1200000, -1500000), new Vector3f(1, 1, 1));
 		camera = new Camera(new Vector3f(0, 0, 0), 0f, 0f, 0f);
-		renderer = new MasterRenderer();
-
+		
+		renderer = new MasterRenderer(this);
+		
 		world = new World(renderer);
 		world.startGeneration();
-
+		
 		CommandManager.registerAll();
 
 		TexturedModel playerModel = new TexturedModel(loader.loadToVao(OBJLoader.loadOBJ("player_real")),
@@ -79,7 +81,7 @@ public class Game extends DisplayManager {
 		
 		item = new ItemEntity(playerModel, new Vector3f(0.5f,World.SUPERFLAT_HEIGHT+2, 0.5f), 0,0,0,1);
 		
-		renderer.processEntity(item);
+		//renderer.processEntity(item);
 		
 
 		lastTick = System.nanoTime();
