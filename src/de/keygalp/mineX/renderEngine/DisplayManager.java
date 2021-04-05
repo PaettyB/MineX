@@ -21,6 +21,7 @@ import static org.lwjgl.system.MemoryUtil.NULL;
 public abstract class DisplayManager {
 
 	protected static long window;
+	protected static long context;
 
 	public static final int WIDTH = 1280;
 	public static final int HEIGHT = 720;
@@ -104,6 +105,7 @@ public abstract class DisplayManager {
 
 		// Make the OpenGL context current
 		glfwMakeContextCurrent(window);
+		context = glfwGetCurrentContext();
 		// Enable v-sync
 		glfwSwapInterval(1);
 
