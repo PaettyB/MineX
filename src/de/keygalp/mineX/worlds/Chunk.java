@@ -6,7 +6,7 @@ import org.joml.Vector2i;
 
 public class Chunk {
 
-	public static final int HEIGHT = 16;
+	public static final int HEIGHT = 1;
 	public static final int SIZE = 16;
 
 	// private Game game;
@@ -30,13 +30,13 @@ public class Chunk {
 		}
 	}
 
-	public void generate(byte[] load_vertices, int[] load_indices, float[] load_textureCoords, byte[] load_normals) {
-		for (int i = SIZE - 1; i >= 0; i--) {
+	public void generate() {
+		for (int i = HEIGHT - 1; i >= 0; i--) {
 			if (sections[i].getState() == ChunkState.UPDATED) {
-				sections[i].regenerateMesh(load_vertices, load_indices, load_textureCoords, load_normals);
+				sections[i].regenerateMesh();
 			} else {
 				sections[i].calculateActives();
-				sections[i].generate(load_vertices, load_indices, load_textureCoords, load_normals);
+				sections[i].generate();
 			}
 		}
 	}

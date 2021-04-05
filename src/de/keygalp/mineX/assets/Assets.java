@@ -24,11 +24,11 @@ public class Assets {
 	
 	public static void loadAssets(Loader loader) {
 		TextureType.loadTextureTypes();
-		DIRT_TEXTURE = new ModelTexture(loader.loadTexture("textures/dirt"));
+		//DIRT_TEXTURE = new ModelTexture(loader.loadTexture("textures/dirt"));
 		WHITE_TEXTURE = new ModelTexture(loader.loadTexture("textures/white"));
 		SPRITE_SHEET = new ModelTexture(loader.loadTexture("textures/spriteSheet"));
 		
-		DIRT = new TexturedModel(loader.loadToVao(OBJLoader.loadOBJ("block")), DIRT_TEXTURE);
+		//DIRT = new TexturedModel(loader.loadToVao(OBJLoader.loadOBJ("block")), DIRT_TEXTURE);
 	
 		FONT_ARIAL = new FontType(loader.loadTexture("fonts/arial"), new File("res/fonts/arial.fnt"));
 		FONT_MINECRAFTER = new FontType(loader.loadTexture("fonts/minecrafter"), new File("res/fonts/minecrafter.fnt"));

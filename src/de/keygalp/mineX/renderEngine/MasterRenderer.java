@@ -12,10 +12,7 @@ import org.joml.Matrix4f;
 import org.lwjgl.glfw.GLFW;
 import org.lwjgl.opengl.GL11;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static org.lwjgl.opengl.GL11.*;
 
@@ -40,8 +37,8 @@ public class MasterRenderer {
 	private ChunkRenderer chunkRenderer;
 	private EntityRenderer entityRenderer;
 
-	private Map<TexturedModel, List<Entity>> entities = new HashMap<TexturedModel, List<Entity>>();
-	private List<ChunkSection> chunks = new ArrayList<ChunkSection>();
+	private Map<TexturedModel, List<Entity>> entities = new HashMap<>();
+	private List<ChunkSection> chunks = Collections.synchronizedList(new ArrayList<>());
 
 	private Game game;
 	
@@ -121,7 +118,7 @@ public class MasterRenderer {
 		shader.loadLight(sun);
 		shader.loadViewMatrix(camera);
 		chunkRenderer.render(chunks);
-		entityRenderer.render(entities);
+		//entityRenderer.render(entities);
 		shader.stop();
 	}
 

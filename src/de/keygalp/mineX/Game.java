@@ -34,7 +34,7 @@ public class Game extends DisplayManager {
 	public static float frameTimeMS;
 	public static long lastTick;
 
-	private HUDManager hudManager;
+	//private HUDManager hudManager;
 	
 	private EventExecutor eventExecutor;
 
@@ -64,25 +64,25 @@ public class Game extends DisplayManager {
 		renderer = new MasterRenderer(this);
 		
 		world = new World(renderer);
-		world.startGeneration();
+		
 		
 		CommandManager.registerAll();
 
-		TexturedModel playerModel = new TexturedModel(loader.loadToVao(OBJLoader.loadOBJ("player_real")),
-				new ModelTexture(loader.loadTexture("/textures/PlayerUV")));
+		TexturedModel playerModel = new TexturedModel(null,
+				null);
 
 		player = new Player(this, playerModel, new Vector3f(0, World.SUPERFLAT_HEIGHT+4, 0), 0, 0, 0, 0.1f);
 
-		guiRenderer = new GUIRenderer(loader);
+		//guiRenderer = new GUIRenderer(loader);
 
-		hudManager = new HUDManager(this, loader, guiRenderer);
+		//hudManager = new HUDManager(this, loader, guiRenderer);
 
 		camera.setPitch(180);
 		
 		item = new ItemEntity(playerModel, new Vector3f(0.5f,World.SUPERFLAT_HEIGHT+2, 0.5f), 0,0,0,1);
 		
 		//renderer.processEntity(item);
-		
+		world.startGeneration();
 
 		lastTick = System.nanoTime();
 
@@ -96,7 +96,7 @@ public class Game extends DisplayManager {
 		player.tick();
 		player.clampCamera(camera);
 		world.update();
-		hudManager.update();
+		//hudManager.update();
 		CharacterHandler.clear();
 	}
 
@@ -108,15 +108,15 @@ public class Game extends DisplayManager {
 		lastTick = now;
 		renderer.render(light, camera);
 		if (HUDManager.VISIBLE) {
-			guiRenderer.render();
+			//guiRenderer.render();
 
-			TextMaster.render();
+			//TextMaster.render();
 		}
 	}
 
 	public void cleanAll() {
 		TextMaster.cleanUp();
-		guiRenderer.cleanUp();
+		//guiRenderer.cleanUp();
 		renderer.cleanUp();
 		loader.cleanUp();
 	}

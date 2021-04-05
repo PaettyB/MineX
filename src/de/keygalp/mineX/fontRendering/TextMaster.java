@@ -23,21 +23,21 @@ public class TextMaster {
 	}
 
 	public static void render() {
-		renderer.render(texts);
+		//renderer.render(texts);
 	}
 
 	public static void updateText(GUIText text, int vaoID, int posVBO, int texVBO) {
-		FontType font = text.getFont();
+		/*FontType font = text.getFont();
 		TextMeshData data = font.loadText(text);
 		//if (data.getVertexPositions().length > 0) {
 			loader.updateVao(vaoID, posVBO, texVBO, data.getVertexPositions(), data.getTextureCoords());
 			text.setMeshInfo(vaoID, posVBO, texVBO, data.getVertexCount());
-	//	}
+	//	}*/
 		
 	}
 
 	public static void loadText(GUIText text) {
-		FontType font = text.getFont();
+		/*FontType font = text.getFont();
 		TextMeshData data = font.loadText(text);
 		VertexArrayPointers pointers = loader.loadToVao(data.getVertexPositions(), data.getTextureCoords());
 		text.setMeshInfo(pointers.vao, pointers.posVBO, pointers.texVBO, data.getVertexCount());
@@ -46,7 +46,7 @@ public class TextMaster {
 			textBatch = new ArrayList<GUIText>();
 			texts.put(font, textBatch);
 		}
-		textBatch.add(text);
+		textBatch.add(text);*/
 	}
 
 	public static void removeText(GUIText text) {

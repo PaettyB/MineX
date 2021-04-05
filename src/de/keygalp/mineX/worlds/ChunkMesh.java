@@ -8,50 +8,41 @@ import java.nio.IntBuffer;
 
 public class ChunkMesh {
 
-	private int vaoID;
 	private int vertexCount;
 
-	private int indVBO;
-	private int posVBO;
-	private int texVBO;
-	private int norVBO;
+	private int vbo, ibo;
+	private int nOffset, tOffset;
 
-	public ChunkMesh(int vaoID, int vertexCount, int indVBO, int posVBO, int texVBO, int norVBO) {
-		this.vaoID = vaoID;
-		this.indVBO = indVBO;
-		this.posVBO = posVBO;
-		this.texVBO = texVBO;
-		this.norVBO = norVBO;
+	public ChunkMesh(int vbo, int ibo, int vertexCount, int nOffset, int tOffset) {
+		this.ibo = ibo;
+		this.vbo = vbo;
+		this.nOffset = nOffset;
+		this.tOffset = tOffset;
 		this.vertexCount = vertexCount;
 	}
-
-	public void updateChunkInVao(ByteBuffer positions, FloatBuffer textureCoords, ByteBuffer normals,
-			IntBuffer indices) {
-		Game.getLoader().updateChunkInVao(vaoID, posVBO, indVBO, texVBO, norVBO, positions, textureCoords, normals,
-				indices);
+	
+	public void updateChunkInVao(byte[] positions, float[] textureCoords, byte[] normals, int[] indices) {
+		//Game.getLoader().updateChunkInVao(vaoID, posVBO, indVBO, texVBO, norVBO, positions, textureCoords, normals,
+		//		indices);
 		
 	}
-
-	public int getIndVBO() {
-		return indVBO;
+	
+	public int getVbo() {
+		return vbo;
 	}
-
-	public int getPosVBO() {
-		return posVBO;
+	
+	public int getIbo() {
+		return ibo;
 	}
-
-	public int getTexVBO() {
-		return texVBO;
+	
+	public int getNOffset() {
+		return nOffset;
 	}
-
-	public int getNorVBO() {
-		return norVBO;
+	
+	public int getTOffset() {
+		return tOffset;
 	}
-
-	public int getVaoID() {
-		return vaoID;
-	}
-
+	
 	public int getVertexCount() {
 		return vertexCount;
 	}

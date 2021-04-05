@@ -8,10 +8,11 @@ import de.keygalp.mineX.worlds.ChunkSection;
 import de.keygalp.mineX.worlds.ChunkState;
 import org.joml.Matrix4f;
 import org.joml.Vector3f;
-import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL13;
-import org.lwjgl.opengl.GL20;
-import org.lwjgl.opengl.GL30;
+import org.lwjgl.opengl.*;
+
+import static org.lwjgl.opengl.GL11.*;
+import static org.lwjgl.opengl.GL15.*;
+import static org.lwjgl.opengl.GL20.glVertexAttribPointer;
 
 import java.util.List;
 
@@ -27,10 +28,12 @@ public class ChunkRenderer {
     }
     
     public void render(List<ChunkSection> chunks) {
+        
         GL13.glActiveTexture(GL13.GL_TEXTURE0);
         GL11.glBindTexture(GL11.GL_TEXTURE_2D, Assets.SPRITE_SHEET.getId());
         
-        for (ChunkSection chunk : chunks) {
+        for (int i = 0; i < chunks.size(); i++) {
+            ChunkSection chunk = chunks.get(i);
             if (chunk.getState() == ChunkState.LOADED || chunk.getState() == ChunkState.UPDATED || chunk.getState() == ChunkState.REGENERATED) {
                 if (chunk.getMesh() == null) {
                     System.err.println("MESH IS NULL");
@@ -38,7 +41,7 @@ public class ChunkRenderer {
                 }
                 prepareModel(chunk.getMesh());
                 prepareChunk(chunk);
-                GL11.glDrawElements(GL11.GL_TRIANGLES, chunk.getMesh().getVertexCount(), GL11.GL_UNSIGNED_INT, 0);
+                GL11.glDrawElements(GL11.GL_TRIANGLES, chunk.getMesh().getVertexCount(), GL11.GL_UNSIGNED_INT,0);
                 unbindModel();
             }
             //System.out.println(chunks.size());
@@ -90,26 +93,36 @@ public class ChunkRenderer {
     }
     
     private void prepareModel(ChunkMesh mesh) {
-        GL30.glBindVertexArray(mesh.getVaoID());
-        GL20.glEnableVertexAttribArray(0);
-        GL20.glEnableVertexAttribArray(1);
-        GL20.glEnableVertexAttribArray(2);
+        glBindBuffer(GL_ARRAY_BUFFER, mesh.getVbo());
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh.getIbo());
+    
+        glEnableClientState(GL_VERTEX_ARRAY);             // activate vertex position array
+        glEnableClientState(GL_NORMAL_ARRAY);             // activate vertex normal array
+        glEnableClientState(GL_TEXTURE_COORD_ARRAY);      // activate texture coord array
+        
+        glVertexPointer(3, GL_BYTE,0,0);
+        glNormalPointer(GL_BYTE,0, mesh.getNOffset());
+        glTexCoordPointer(2, GL_FLOAT, 0, mesh.getTOffset());
+        
         
     }
     
     private void unbindModel() {
-        GL20.glDisableVertexAttribArray(0);
-        GL20.glDisableVertexAttribArray(1);
-        GL20.glDisableVertexAttribArray(2);
-        GL30.glBindVertexArray(0);
+        glDisableClientState(GL_VERTEX_ARRAY);            // deactivate vertex position array
+        glDisableClientState(GL_NORMAL_ARRAY);            // deactivate vertex normal array
+        glDisableClientState(GL_TEXTURE_COORD_ARRAY);     // deactivate vertex tex coord array
+        
+        GL15.glBindBuffer(GL15.GL_VERTEX_ARRAY, 0);
+        GL15.glBindBuffer(GL15.GL_ELEMENT_ARRAY_BUFFER, 0);
+        
     }
     
     private void prepareChunk(ChunkSection chunk) {
-        Matrix4f transformationMatrix = Maths
-                .createTransformationMatrix(
-                        new Vector3f(chunk.getPosition().x * ChunkSection.SIZE,
-                                chunk.getPosition().y * ChunkSection.SIZE, chunk.getPosition().z * ChunkSection.SIZE),
-                        0, 0, 0, 1);
+        Matrix4f transformationMatrix = Maths.createTransformationMatrix(new Vector3f(
+                        chunk.getPosition().x * ChunkSection.SIZE,
+                        chunk.getPosition().y * ChunkSection.SIZE,
+                        chunk.getPosition().z * ChunkSection.SIZE),
+                0, 0, 0, 1);
         shader.loadTransformationMatrix(transformationMatrix);
     }
 }

@@ -40,11 +40,7 @@ public class ChunkSection {
 	private int[] indices;
 	private float[] textureCoords;
 	private byte[] normals;
-
-	IntBuffer indicesBuffer;
-	ByteBuffer positionsBuffer;
-	FloatBuffer texturesBuffer;
-	ByteBuffer normalsBuffer;
+	
 
 	public ChunkSection(int x, int y, int z) {
 		position = new Vector3i(x, y, z);
@@ -73,10 +69,12 @@ public class ChunkSection {
 						}
 					}
 					} else {
-						if(position.y * SIZE + j <= World.SUPERFLAT_HEIGHT) {
-							blocks[i][j][k] = Material.GRASS.getId();
+						/*if(position.y * SIZE + j <= World.SUPERFLAT_HEIGHT) {
+							blocks[i][j][k] = Material.STONE.getId();
 							blockCount++;
-						}
+						}*/
+						blocks[0][0][0] = Material.STONE.getId();
+						blockCount = 1;
 					}
 					/*
 					 * if (position.y * SIZE + j <= World.SUPERFLAT_HEIGHT) { blocks[i][j][k] =
@@ -91,24 +89,19 @@ public class ChunkSection {
 		} else {
 			state = ChunkState.POPULATED;
 		}
-
-		// vertexCountTotal = blockCount * 6 * 4;
 	}
 
 	public void load() {
 		if (state != ChunkState.GENERATED && state != ChunkState.REGENERATED)
 			return;
 
-		mesh = Game.getLoader().loadChunkToVao(positionsBuffer, texturesBuffer, normalsBuffer, indicesBuffer);
+		mesh = Game.getLoader().loadChunkToVao(vertices, textureCoords, normals, indices);
 		state = ChunkState.LOADED;
 	}
 
 	public void reload() {
-		// if(state != ChunkState.REGENERATED && state != ChunkState.LOADED)
-		// return;
-		// System.out.println(state.toString());
-		mesh.setVertexCount(indicesBuffer.capacity());
-		mesh.updateChunkInVao(positionsBuffer, texturesBuffer, normalsBuffer, indicesBuffer);
+		mesh.setVertexCount(indices.length);
+		mesh.updateChunkInVao(vertices, textureCoords, normals, indices);
 		state = ChunkState.LOADED;
 
 	}
@@ -116,11 +109,8 @@ public class ChunkSection {
 	public void unload() {
 		if (state != ChunkState.LOADED)
 			return;
-		GL15.glDeleteBuffers(mesh.getIndVBO());
-		GL15.glDeleteBuffers(mesh.getPosVBO());
-		GL15.glDeleteBuffers(mesh.getTexVBO());
-		GL15.glDeleteBuffers(mesh.getNorVBO());
-		GL30.glDeleteVertexArrays(mesh.getVaoID());
+		GL15.glDeleteBuffers(mesh.getVbo());
+		GL15.glDeleteBuffers(mesh.getIbo());
 		Game.getWorld().addVertexCount(-newVertices);
 		Game.getWorld().addBlockCount(-blockCount);
 		//System.out.println("Unloaded");
@@ -140,15 +130,11 @@ public class ChunkSection {
 		}
 	}
 
-	public void regenerateMesh(byte[] vertices, int[] indices, float[] textureCoords, byte[] normals) {
+	public void regenerateMesh() {
 		if (state != ChunkState.UPDATED)
 			return;
 		newVertices = 0;
 		newFaces = 0;
-		this.vertices = vertices;
-		this.indices = indices;
-		this.textureCoords = textureCoords;
-		this.normals = normals;
 
 		for (byte i = 0; i < SIZE; i++) {
 			for (byte j = 0; j < SIZE; j++) {
@@ -162,35 +148,25 @@ public class ChunkSection {
 		}
 
 		if (newVertices < 1) {
-			/*
-			 * vertices = null; indices = null; textureCoords = null; normals = null;
-			 */
 			return;
 		}
-
-		positionsBuffer = Game.getLoader().storeDataInByteBuffer(vertices, newVertices * 3);
-		indicesBuffer = Game.getLoader().storeDataInIntBuffer(indices, blockCount * 6 * 3 * 3);
-		texturesBuffer = Game.getLoader().storeDataInFloatBuffer(textureCoords, newVertices * 2);
-		normalsBuffer = Game.getLoader().storeDataInByteBuffer(normals, newVertices * 3);
 		state = ChunkState.REGENERATED;
-
-		vertices = null;
-		indices = null;
-		textureCoords = null;
-		normals = null;
+		
 	}
 
-	public void generate(byte[] vertices, int[] indices, float[] textureCoords, byte[] normals) {
+	public void generate() {
 		if (state != ChunkState.POPULATED)
 			return;
 
 		newVertices = 0;
 		newFaces = 0;
-		this.vertices = vertices;
-		this.indices = indices;
-		this.textureCoords = textureCoords;
-		this.normals = normals;
-
+		
+		vertices = new byte[blockCount * 24 * 3];
+		normals = new byte[blockCount * 24 * 3];
+		textureCoords = new float[blockCount * 24 * 2];
+		indices = new int[blockCount * 36];
+		
+		
 		for (byte i = 0; i < SIZE; i++) {
 			for (byte j = 0; j < SIZE; j++) {
 				for (byte k = 0; k < SIZE; k++) {
@@ -210,17 +186,8 @@ public class ChunkSection {
 			 */
 			return;
 		}
-
-		positionsBuffer = Game.getLoader().storeDataInByteBuffer(vertices, newVertices * 3);
-		indicesBuffer = Game.getLoader().storeDataInIntBuffer(indices, blockCount * 6 * 3 * 3);
-		texturesBuffer = Game.getLoader().storeDataInFloatBuffer(textureCoords, newVertices * 2);
-		normalsBuffer = Game.getLoader().storeDataInByteBuffer(normals, newVertices * 3);
 		state = ChunkState.GENERATED;
-
-		vertices = null;
-		indices = null;
-		textureCoords = null;
-		normals = null;
+		
 	}
 
 	public void updateChunkBorderActives(int direction) {
