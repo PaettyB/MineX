@@ -94,36 +94,58 @@ public class Loader {
         return new RawModel(vaoID, indices.length);
     }
     
-    public ChunkMesh loadChunkToVao(byte[] positions, float[] textureCoords, byte[] normals, int[] indices) {
+    public ChunkMesh loadChunkToVao(FloatBuffer positions, FloatBuffer textureCoords, FloatBuffer normals,
+                                    IntBuffer indices) {
         
         //TODO: REWRITE LOADING to not use ARRAY BUFFER
         int ibo = glGenBuffers();
         int vbo = glGenBuffers();
+        
+        System.out.println(ibo + "=ibo, " + vbo + "=vbo");
+        
+        if (vbos.contains(vbo) || vbos.contains(ibo))
+            System.out.println("ERROR While loading");
+        
         vbos.add(ibo);
         vbos.add(vbo);
         
+        System.out.print("tex: ");
         
-        int nOffset = positions.length;
-        int tOffset = positions.length + normals.length;
+        for (int i = 0; i < textureCoords.capacity(); i++) {
+            System.out.print(textureCoords.get(i) + " ");
+            
+        }
+        System.out.println("");
         
-        System.out.println("Vertices: " + positions.length / 3);
-        System.out.println("Texture Coords: " + textureCoords.length / 2);
-        System.out.println("Indices: " + indices.length);
-        System.out.println("Normals : " + normals.length / 3);
+        int size_pos = Float.BYTES * positions.capacity();
+        int size_nor = Float.BYTES * positions.capacity();
+        int size_tex = Float.BYTES * positions.capacity();
+        int size_ind = Integer.BYTES * indices.capacity();
         
+        int nOffset = size_pos;
+        int tOffset = size_pos + size_nor;
+        
+        
+        System.out.println("Indices: " + indices.capacity());
+        System.out.println("Vertices: " + positions.capacity());
+        System.out.println("Texture Coords: " + textureCoords.capacity());
+        System.out.println("Normals : " + normals.capacity());
         
         glBindBuffer(GL_ARRAY_BUFFER, vbo);
-        glBufferData(GL_ARRAY_BUFFER, positions.length + normals.length + textureCoords.length, GL_STATIC_DRAW);
-        glBufferSubData(GL_ARRAY_BUFFER, 0, storeDataInByteBuffer(positions));
-        glBufferSubData(GL_ARRAY_BUFFER, nOffset, storeDataInByteBuffer(normals));
-        glBufferSubData(GL_ARRAY_BUFFER, tOffset, storeDataInFloatBuffer(textureCoords));
+        glBufferData(GL_ARRAY_BUFFER, size_pos + size_nor + size_tex, GL_STATIC_DRAW);
+        glBufferSubData(GL_ARRAY_BUFFER, 0, positions);
+        glBufferSubData(GL_ARRAY_BUFFER, nOffset, normals);
+        glBufferSubData(GL_ARRAY_BUFFER, tOffset, textureCoords);
+        
+        
         glBindBuffer(GL_ARRAY_BUFFER, 0);
+        
         
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
         glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices, GL_STATIC_DRAW);
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
         
-        return new ChunkMesh(vbo, ibo,indices.length, nOffset, tOffset);
+        return new ChunkMesh(vbo, ibo, indices.capacity(), nOffset, tOffset);
     }
     
     /*
@@ -311,7 +333,6 @@ public class Loader {
     }
     
     public static FloatBuffer storeDataInFloatBuffer(float[] data) {
-        System.out.println(data.length);
         FloatBuffer buffer = BufferUtils.createFloatBuffer(data.length);
         buffer.put(data);
         buffer.flip();

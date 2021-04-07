@@ -79,8 +79,8 @@ public abstract class DisplayManager {
         if (window == NULL)
             throw new RuntimeException("Failed to create the GLFW window");
     
-        otherWindow = glfwCreateWindow(1, 1, "OtherWindow", NULL, window);
-        //WGL.wglShareLists(window, otherWindow);
+        otherWindow = glfwCreateWindow(WIDTH, HEIGHT, "OtherWindow", NULL, window);
+        WGL.wglShareLists(window, otherWindow);
         
         // Setup a key callback. It will be called every time a key is pressed,
         // repeated or released.

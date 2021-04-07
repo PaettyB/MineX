@@ -34,7 +34,7 @@ public class Game extends DisplayManager {
 	public static float frameTimeMS;
 	public static long lastTick;
 
-	//private HUDManager hudManager;
+	private HUDManager hudManager;
 	
 	private EventExecutor eventExecutor;
 
@@ -73,9 +73,9 @@ public class Game extends DisplayManager {
 
 		player = new Player(this, playerModel, new Vector3f(0, World.SUPERFLAT_HEIGHT+4, 0), 0, 0, 0, 0.1f);
 
-		//guiRenderer = new GUIRenderer(loader);
+		guiRenderer = new GUIRenderer(loader);
 
-		//hudManager = new HUDManager(this, loader, guiRenderer);
+		hudManager = new HUDManager(this, loader, guiRenderer);
 
 		camera.setPitch(180);
 		
@@ -96,7 +96,7 @@ public class Game extends DisplayManager {
 		player.tick();
 		player.clampCamera(camera);
 		world.update();
-		//hudManager.update();
+		hudManager.update();
 		CharacterHandler.clear();
 	}
 
@@ -108,15 +108,14 @@ public class Game extends DisplayManager {
 		lastTick = now;
 		renderer.render(light, camera);
 		if (HUDManager.VISIBLE) {
-			//guiRenderer.render();
-
-			//TextMaster.render();
+			guiRenderer.render();
+			TextMaster.render();
 		}
 	}
 
 	public void cleanAll() {
 		TextMaster.cleanUp();
-		//guiRenderer.cleanUp();
+		guiRenderer.cleanUp();
 		renderer.cleanUp();
 		loader.cleanUp();
 	}

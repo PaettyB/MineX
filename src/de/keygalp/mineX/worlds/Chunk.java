@@ -30,13 +30,13 @@ public class Chunk {
 		}
 	}
 
-	public void generate() {
+	public void generate(float[] load_vertices, int[] load_indices, float[] load_textureCoords, float[] load_normals) {
 		for (int i = HEIGHT - 1; i >= 0; i--) {
 			if (sections[i].getState() == ChunkState.UPDATED) {
-				sections[i].regenerateMesh();
+				sections[i].regenerateMesh(load_vertices, load_indices, load_textureCoords, load_normals);
 			} else {
 				sections[i].calculateActives();
-				sections[i].generate();
+				sections[i].generate(load_vertices, load_indices, load_textureCoords, load_normals);
 			}
 		}
 	}

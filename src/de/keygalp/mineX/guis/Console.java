@@ -21,7 +21,7 @@ public class Console {
 		this.size = size;
 		frame = new GUIObject(position, size, game.getLoader());
 		frame.setVisible(Chat.visible);
-		//game.getGUIRenderer().addObject(frame);
+		game.getGUIRenderer().addObject(frame);
 		
 		textContainer = new TextContainer(game, position,size);
 	}

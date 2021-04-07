@@ -53,6 +53,12 @@ public class World {
     private GUIText chunkText, generateText, populateText, xText, yText, zText, vertexText, chunkRenderText;
     private static float fontSize = 0.025f;
     
+    
+    private float[] load_vertices;
+    private int[] load_indices;
+    private float[] load_textureCoords;
+    private float[] load_normals;
+    
     public World(MasterRenderer renderer) {
         this.renderer = renderer;
         
@@ -66,7 +72,11 @@ public class World {
         zText = new GUIText("Z: 0000", fontSize, new Vector2i(0, TextMeshCreator.getPixelLineHeight(fontSize) * 6));
         vertexText = new GUIText("Vertices/Faces/Blocks: 0000", fontSize,
                 new Vector2i(0, TextMeshCreator.getPixelLineHeight(fontSize) * 7));
-        
+    
+        load_vertices = new float[ChunkSection.MAX_VERTICES * 3];
+        load_indices = new int[ChunkSection.volume * 6 * 3 * 3];
+        load_textureCoords = new float[ChunkSection.MAX_VERTICES * 2];
+        load_normals = new float[ChunkSection.MAX_VERTICES * 3];
     }
     
     public void update() { //MAIN THREAD
@@ -93,7 +103,7 @@ public class World {
         zText.update(String.format("Z: %.2f / %d", Game.getPlayer().getPosition().z, Game.getPlayer().getBlockPosition().z));
         vertexText.update("Vertices / Faces / Blocks: " + vertexCount + " / " + vertexCount / 4 + " / " + blockCount);
         
-        //generate();
+        generate();
     }
     
     public void startGeneration() {
@@ -104,7 +114,7 @@ public class World {
                 glfwMakeContextCurrent(Game.getOtherWindowId());
                 GL.createCapabilities();
                 while (!glfwWindowShouldClose(DisplayManager.getWindowId())) {
-                    generate();
+                   //generate();
                 }
             }
         };
@@ -136,7 +146,7 @@ public class World {
                 continue;
             }
             recalculateNeighbourBorders(pos);
-            chunks.get(pos).generate();
+            chunks.get(pos).generate(load_vertices, load_indices, load_textureCoords, load_normals);
             chunks.get(pos).load();
         }
         
@@ -145,9 +155,9 @@ public class World {
             Vector3i pos = chunkSectionsToRegenerate.remove(0);
             ChunkSection cs = getChunkSection(pos);
             if (cs.getState() == ChunkState.UPDATED) {
-                cs.regenerateMesh();
+                cs.regenerateMesh(load_vertices, load_indices, load_textureCoords, load_normals);
             } else {
-                cs.generate();
+                cs.generate(load_vertices, load_indices, load_textureCoords, load_normals);
             }
             
             // RELOAD

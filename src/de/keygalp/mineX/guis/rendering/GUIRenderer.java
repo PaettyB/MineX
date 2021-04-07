@@ -22,8 +22,8 @@ public class GUIRenderer {
 	}
 
 	public void render() {
-		//textureRenderer.render();
-		//objectRenderer.render();
+		textureRenderer.render();
+		objectRenderer.render();
 	}
 
 	public void cleanUp() {

@@ -1,27 +1,28 @@
 package de.keygalp.mineX.worlds;
 
-import de.keygalp.mineX.Game;
-
 import java.nio.ByteBuffer;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 
 public class ChunkMesh {
 
-	private int vertexCount;
+	private int indexCount;
 
 	private int vbo, ibo;
 	private int nOffset, tOffset;
 
-	public ChunkMesh(int vbo, int ibo, int vertexCount, int nOffset, int tOffset) {
+	public ChunkMesh(int vbo, int ibo, int indexCount, int nOffset, int tOffset) {
 		this.ibo = ibo;
 		this.vbo = vbo;
 		this.nOffset = nOffset;
 		this.tOffset = tOffset;
-		this.vertexCount = vertexCount;
+		this.indexCount = indexCount;
 	}
 	
-	public void updateChunkInVao(byte[] positions, float[] textureCoords, byte[] normals, int[] indices) {
+	
+	
+	public void updateChunkInVao(FloatBuffer positions, FloatBuffer textureCoords, FloatBuffer normals,
+								 IntBuffer indices) {
 		//Game.getLoader().updateChunkInVao(vaoID, posVBO, indVBO, texVBO, norVBO, positions, textureCoords, normals,
 		//		indices);
 		
@@ -43,12 +44,12 @@ public class ChunkMesh {
 		return tOffset;
 	}
 	
-	public int getVertexCount() {
-		return vertexCount;
+	public int getIndexCount() {
+		return indexCount;
 	}
 	
-	public void setVertexCount(int count) {
-		vertexCount = count;
+	public void setIndexCount(int count) {
+		indexCount = count;
 	}
 
 }

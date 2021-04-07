@@ -102,7 +102,6 @@ public class MasterRenderer {
 	}
 
 	public void prepare() {
-		// GL.createCapabilities();
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		glClearColor(RED, GREEN, BLUE, 0.0f);
 		if(fill)
@@ -118,7 +117,7 @@ public class MasterRenderer {
 		shader.loadLight(sun);
 		shader.loadViewMatrix(camera);
 		chunkRenderer.render(chunks);
-		//entityRenderer.render(entities);
+		entityRenderer.render(entities);
 		shader.stop();
 	}
 

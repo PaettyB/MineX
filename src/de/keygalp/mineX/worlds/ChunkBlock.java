@@ -77,7 +77,6 @@ public class ChunkBlock {
 		-1, 1,
 		 1, 1,
 		 1,-1,
-			
 	};
 	
 	public static byte[] sharedNormals = new byte[] {

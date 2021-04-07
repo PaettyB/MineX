@@ -55,7 +55,7 @@ public class GUIText {
 		this.position = position;
 		this.lineMaxSize = maxLineLength;
 		this.centerText = centered;
-		//TextMaster.loadText(this);
+		TextMaster.loadText(this);
 	}
 	
 	
@@ -67,7 +67,7 @@ public class GUIText {
 		this.position = Utils.toNormalPosition(position);
 		this.lineMaxSize = Utils.toNormalLineWidth(maxLineLength);
 		this.centerText = centered;
-		//TextMaster.loadText(this);
+		TextMaster.loadText(this);
 	}
 	
 	public GUIText(String text, float fontSize, Vector2i position) {
@@ -77,7 +77,7 @@ public class GUIText {
 		this.position = Utils.toNormalPosition(position);
 		this.lineMaxSize = 1f;
 		this.centerText = false;
-		//TextMaster.loadText(this);
+		TextMaster.loadText(this);
 	}
 
 	/**
