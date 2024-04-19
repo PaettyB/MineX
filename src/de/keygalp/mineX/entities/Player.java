@@ -14,6 +14,7 @@ import de.keygalp.mineX.inventory.Material;
 import de.keygalp.mineX.inventory.PlayerInventory;
 import de.keygalp.mineX.models.TexturedModel;
 import de.keygalp.mineX.utils.Ray;
+import de.keygalp.mineX.utils.Utils;
 import de.keygalp.mineX.worlds.Direction;
 import de.keygalp.mineX.worlds.World;
 import org.joml.Vector2f;
@@ -130,7 +131,7 @@ public class Player extends Entity implements InventoryHolder {
                                 new Vector3f(blockPosition.x + i, blockPosition.y + j, blockPosition.z + k),
                                 new Vector3f(0, 0, 0), new Vector3f(1, 1, 1));
                         
-                        if (bounds.collide(blockBounds)) {
+                        /*if (bounds.intersects(blockBounds)) {
                             if (bounds.collideY(blockBounds)) {
                                 System.out.println("CollisionY:" + blockBounds.getPos().toString(NumberFormat.getIntegerInstance(Locale.GERMAN)));
                                 position.y -= velocity.y;
@@ -156,7 +157,9 @@ public class Player extends Entity implements InventoryHolder {
                                 //onGround = true;
                                 //bounds.setPos(new Vector3f(position));
                             }
-                        }
+                        }*/
+                        Vector3f delta = bounds.collide(velocity,blockBounds);
+                        position = position.sub(delta);
                     }
                 }
             }

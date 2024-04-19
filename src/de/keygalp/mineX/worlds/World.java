@@ -22,14 +22,14 @@ import static org.lwjgl.glfw.GLFW.glfwWindowShouldClose;
 
 public class World {
 
-	public static final int RENDER_DISTANCE = 2;
+	public static final int RENDER_DISTANCE = 8;
 	public static final int MAX_BUILD_HEIGHT = (Chunk.HEIGHT * ChunkSection.SIZE) - 1;
 	public static final int SUPERFLAT_HEIGHT = 1;
 	
 	public static final float GRAVITY = -0.03f;
 	public static final float AIR_RESITANCE = 0.95f;
 	
-	public static final boolean SUPERFLAT = true;
+	public static final boolean SUPERFLAT = false;
 
 	private Thread thread;
 
@@ -166,7 +166,7 @@ public class World {
 				continue;
 			}
 			chunksToGenerate.add(pos);
-			recalculateNeighbourBorders(pos);
+//			recalculateNeighbourBorders(pos);
 
 		}
 		// GENERATE
@@ -263,7 +263,7 @@ public class World {
 			// if(indices.y == World.MAX_BUILD_HEIGHT && direction == Direction.TOP)
 			// cs.addActiveFace(indices, direction);
 			// else
-			cs.removeActiveFace(indices, direction);
+			cs.addActiveFace(indices, direction);
 		} else {
 
 			Material neighbourBlockType = neighbour.getBlockAtChunkPos(nIndices.x, nIndices.y, nIndices.z);

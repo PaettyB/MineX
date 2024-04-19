@@ -142,7 +142,7 @@ public class MasterRenderer {
 	}
 
 	public void removeChunk(ChunkSection chunk) {
-		chunks.remove(chunk);
+		if (!chunks.remove(chunk)) System.out.println("Chunk was not present");
 	}
 
 	private void createProjectionMatrix() {
